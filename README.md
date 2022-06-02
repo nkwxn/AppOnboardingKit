@@ -1,6 +1,7 @@
 # AppOnboardingKit
 
 AppOnboardingKit provides an onboarding flow that is simple and easy to implement.
+![video-preview](https://github.com/nkwxn/AppOnboardingKit/raw/main/video-preview.gif)
 
 ## Contents
 
