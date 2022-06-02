@@ -8,13 +8,36 @@
 import UIKit
 
 class TitleView: UIView {
-
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    private lazy var titleLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont(name: "ArialRoundedMTBold", size: 28)
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.5
+        label.numberOfLines = 2
+        label.textAlignment = .center
+        return label
+    }()
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        layout()
     }
-    */
-
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setTitle(text: String?) {
+        titleLabel.text = text
+    }
+    
+    private func layout() {
+        addSubview(titleLabel)
+        titleLabel.snp.makeConstraints { make in
+            make.top.equalTo(snp.top).offset(24)
+            make.bottom.equalTo(snp.bottom).offset(-36)
+            make.leading.equalTo(snp.leading).offset(36)
+            make.trailing.equalTo(snp.trailing).offset(-35)
+        }
+    }
 }

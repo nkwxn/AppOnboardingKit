@@ -7,4 +7,7 @@
 
 import Foundation
 
-struct Direction
+enum Direction {
+    case left
+    case right
+}
