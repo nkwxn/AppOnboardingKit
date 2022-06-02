@@ -46,16 +46,16 @@ If you prefer not to use Swift Package Manager, you can integrate FavOnboardingK
 
 ```swift
 import UIKit
-import FavOnboardingKit
+import AppOnboardingKit
 
-class ViewController: UIViewController, FavOnboardingKitDelegate {
+class ViewController: UIViewController, AppOnboardingKitDelegate {
   
-  private var onboardingKit: FavOnboardingKit?
+  private var onboardingKit: AppOnboardingKit?
 
   override func viewDidLoad() {
     super.viewDidLoad()
     DispatchQueue.main.async {
-      self.onboardingKit = FavOnboardingKit(
+      self.onboardingKit = AppOnboardingKit(
         slides: [
           .init(image: UIImage(named: "imSlide1")!,
                 title: "Personalised offers at 40,000+ places"),
@@ -70,7 +70,7 @@ class ViewController: UIViewController, FavOnboardingKitDelegate {
         ],
         tintColor: UIColor(red: 220/255, green: 20/255, blue: 60/255, alpha: 1.0))
       self.onboardingKit?.delegate = self
-      self.onboardingKit?.launchOnboarding(rootVC: self)
+      self.onboardingKit?.launchOnboarding(root: self)
     }
   }
   
