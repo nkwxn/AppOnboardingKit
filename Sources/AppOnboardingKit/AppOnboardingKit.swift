@@ -6,6 +6,7 @@ public protocol AppOnboardingKitDelegate: AnyObject {
 }
 
 public class AppOnboardingKit {
+    private let themeFont: UIFont
     private let slides: [Slide]
     private let tintColor: UIColor
     private var rootVC: UIViewController?
@@ -13,7 +14,7 @@ public class AppOnboardingKit {
     public weak var delegate: AppOnboardingKitDelegate?
     
     private lazy var onboardingViewController: OnboardingViewController = {
-        let controller = OnboardingViewController(slides: self.slides, tintColor: self.tintColor)
+        let controller = OnboardingViewController(slides: self.slides, tintColor: self.tintColor, themeFont: themeFont)
         controller.modalTransitionStyle = .crossDissolve
         controller.modalPresentationStyle = .fullScreen
         controller.nextBtnDidTap = { [weak self] index in
@@ -25,9 +26,14 @@ public class AppOnboardingKit {
         return controller
     }()
     
-    public init(slides: [Slide], tintColor: UIColor) {
+    public init(
+        slides: [Slide],
+        tintColor: UIColor,
+        themeFont: UIFont = UIFont(name: "ArialRoundedMTBold", size: 28) ?? .systemFont(ofSize: 28, weight: .bold)
+    ) {
         self.slides = slides
         self.tintColor = tintColor
+        self.themeFont = themeFont
     }
     
     // UIViewController should be passed in to launch onboarding
